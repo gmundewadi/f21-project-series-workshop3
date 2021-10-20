@@ -1,6 +1,7 @@
 import './App.css';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { useState } from 'react';
 
 const images = [
   {
@@ -17,11 +18,15 @@ const images = [
   },
 ];
 
+
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <h1> An Empty React App for Workshop 3 </h1>
-      <ImageGallery items={images} />
+      <h1> Our image gallery npm module </h1>
+      <ImageGallery items={images} showThumbnails={false} autoPlay={true} slideInterval={5000} onSlide={() => setCount(count + 1)} />
+      <h1> Our image gallery has changed images {count} times </h1>
     </div>
   );
 }
